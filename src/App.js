@@ -5,6 +5,7 @@ import { faBars } from '@fortawesome/free-solid-svg-icons'
 import escapeRegExp from 'escape-string-regexp';
 import Container from './mapContainer'
 import sortBy from 'sort-by'
+import {Map, GoogleApiWrapper, Marker, InfoWindow} from 'google-maps-react'
 
 class App extends Component {
 
@@ -116,23 +117,45 @@ openCloseMenu = () => {
       </div>
       <ul className="places">
       {filteredLocations.map((place) => (     
-        <li key={place.name} className="" onClick={this.onMarkerClick}>{place.name}</li>
+        <li key={place.name} className="" onClick={this.onMarkerClick} >{place.name}</li>
         ))}
     </ul>
   </div>
   <div className="map-container">
-      <Container 
-      places={filteredLocations} 
-      clickMarker={this.onMarkerClick}
-      activeMarker={this.state.activeMarker}
-      showingInfoWindow={this.state.showingInfoWindow}
-      selectedPlace={this.state.selectedPlace}
-      onMapClicked={this.onMapClicked}
-      />
+
+  <Map google={this.props.google}
+            onClick={this.onMapClicked}
+            initialCenter={{
+              lat:43.4643, 
+              lng:-80.5204
+            }}
+            zoom={12}
+            >
+            {filteredLocations.map((place) => (
+            <Marker
+            key={place.name}
+            onClick={this.onMarkerClick}
+            position={place.position}
+            name={place.name}
+            ></Marker>
+          ))}
+
+        <InfoWindow
+          marker={this.state.activeMarker}
+          visible={this.state.showingInfoWindow}>
+          
+            <div>
+              <h3>{this.state.selectedPlace.name}</h3>
+            </div>
+        </InfoWindow>
+      </Map>
+
       </div>
       </div>
     );
   }
 }
 
-export default App;
+export default GoogleApiWrapper({
+  apiKey:('AIzaSyD3CUp0hxnPlJ3Ig0vpm2klPIuOWJjCdcc')
+})(App)
