@@ -13,7 +13,7 @@ state = {
   showingInfoWindow: false,
   activeMarker: {},
   selectedPlace: {},
-  active: false,
+  active: true,
 
   sidebar:'open',
   query: '',
@@ -58,15 +58,12 @@ if (this.state.showingInfoWindow) {
 }
 };
 
-onSidePanelCLick = () => {
-
-}
-
 updateQuery = (query) => {
   this.setState({
     query: query
   })
 }
+
 
 openCloseMenu = () => {
   let ul = document.querySelector('.side-nav')
@@ -78,6 +75,8 @@ openCloseMenu = () => {
       this.setState({sidebar: 'open'})
     }
 }
+
+
   render() {
     const {query} = this.state;
     const {places} = this.state;
@@ -91,7 +90,8 @@ openCloseMenu = () => {
       filteredLocations=places
     }
     filteredLocations.sort(sortBy('name'))
-  
+
+    
     return (
       <div className="App">
         <header className="header">
@@ -117,7 +117,7 @@ openCloseMenu = () => {
       </div>
       <ul className="places">
       {filteredLocations.map((place) => (     
-        <li key={place.name} className="" onClick={this.onMarkerClick} >{place.name}</li>
+        <li key={place.name} className="" onClick={this.onMarkerClick}>{place.name}</li>
         ))}
     </ul>
   </div>
