@@ -6,14 +6,14 @@ body{
   overflow-x:hidden;
   height:100%;
 }
-h1, h2{
+h1, h2, h4{
   font-weight:200;
   color:rgba(225,225,225,1);
   font-family:'Josefin Sans';
 }
 
 .header{
-  background-color:rgba(40,40,40,1);
+  background-color:rgba(30,30,30,1);
   overflow:hidden;
   height:63px;
   display: flex;
@@ -46,40 +46,69 @@ h1, h2{
 
 .side-nav{
   height:100%;
-  width:250px;
+  width:280px;
   position:fixed;
   z-index:1;
   top:0;
   left:0;
-  background-color:#000;
+  background:
+  linear-gradient(
+    rgba(42,42, 42, 1), rgba(48, 48, 48, 1)
+  );
   overflow-x:hidden;
   padding-top:60px;
   transition:0.5s;
-  
+  box-shadow: 1px 0 12px 1px rgba(45,45,45,1);;
 }
 .side-nav ul{
   padding:0;
 }
 
 .side-nav li{
-  padding:15px 10px 15px 30px;
+  padding:20px 10px 20px 20px;
   text-decoration:none;
-  font-size:0.9em;
-  color:#ccc;
   display:block;
   transition:0.3s;
+  margin-bottom:1px;
+  font-size:13px;
+  color:rgb(214, 214, 214);
   cursor:pointer;
+  background:
+  linear-gradient(
+    rgba(66,66, 66, 1), rgba(56, 56, 56, 1)
+  );
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
-.side-nav h2{
-  padding:0 10px 10px 30px;
+
+.row span{
+  margin-right:1em;
+
+}
+.home{
+  font-size:1.1em;
+}
+.side-nav p{
+  margin:0;
+}
+.side-nav h4{
+  padding:15px 10px 10px 20px;
+  margin:0;
 }
 .side-nav li:hover{
-  background-color:grey;
-  color:white;
-  
+  color:rgb(25, 198, 255);
 }
+.list:first-child{
+  border-top:1px solid rgba(80,80,80, 1);
+  margin-top:0;
+}
+
 .places{
-  margin-top:1em;
+  margin-top:2em;
+  border-top:1px solid rgba(30,30,30,1);
+  box-shadow: 0 1px 1px 0 rgba(35,35,35,1);
 }
 
 #main{
@@ -89,7 +118,8 @@ h1, h2{
   width:100%;
 }
 input::placeholder {
-  padding-left:1em;
+  padding-left:20px;
+  color:rgb(150, 150, 150);
 }
 
 .searchbox{
@@ -100,7 +130,10 @@ input::placeholder {
 
 .search{
   width:100%;
-  height:30px;
+  height:40px;
+  background-color:rgba(30,30, 30, 1);
+  border:none;
+  color:white;
 }
 @media(max-width:768px){
   .header-nav{display:none}
@@ -115,10 +148,10 @@ input::placeholder {
 }
 /*Responsive classes*/
 .response{
-  transform: translateX(-250px);
+  transform: translateX(-280px);
   }
 .side{
-  background-color: blue;
+  background: rgba(40,40,40,1);
 }
 
 /* =============== MAP CONTAINER =================== */
