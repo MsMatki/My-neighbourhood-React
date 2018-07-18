@@ -56,27 +56,24 @@ state = {
     }
 
     updateQuery = (query) => {
-        this.setState({
-          query: query
-        })
-      }
+        this.setState({query: query})
+        const {markers} = this.state
+        //filter markers
+        markers.forEach((marker) => {
+            if (marker.title.toLowerCase().indexOf(query.toLowerCase()) >= 0){
+                marker.setVisible(true);
+            } else {
+                marker.setVisible(false);
+            }
+        });
+        
+        this.setState({markers});
+    };
 
 
     setMarkers = (map) => {
-        const {query} = this.state;
-        const {places} = this.state;
-        //get the filter query to filter the listitems 
-        let filteredLocations
-        if (query){
-          const match = new RegExp(escapeRegExp(query),'i')
-          filteredLocations = places.filter((place) => match.test(place.name))
-        }
-        else{
-          filteredLocations=places
-        }
-        filteredLocations.sort(sortBy('name'))
         
-        let markers = filteredLocations.map(place => {
+        let markers = this.state.places.map(place => {
             const marker = new window.google.maps.Marker({
                 position: {lat: place.position.lat, lng: place.position.lng},
                 map,
@@ -99,7 +96,6 @@ state = {
 
     render() {
         const {query} = this.state;
-        const {places} = this.state;
         const {markers} = this.state
         //get the filter query to filter the listitems 
         let filteredLocations
@@ -111,7 +107,6 @@ state = {
           filteredLocations=markers
         }
         filteredLocations.sort(sortBy('title'))
-
         const style = {
             width: '100vw',
             height: '100vh'
@@ -119,11 +114,9 @@ state = {
         return (
             <div>
             <Sidebar 
-         
             updateQuery={this.updateQuery} 
             query={this.state.query}
             map={this.state.map} 
-            tips={this.state.tips} 
             filteredLocations={filteredLocations}
             marker={this.state.markers}
             infoWindow={this.state.infoWindow}
