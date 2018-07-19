@@ -6,7 +6,7 @@ body{
   overflow-x:hidden;
   height:100%;
 }
-h1, h2, h4{
+h1, h2, h5{
   font-weight:200;
   color:rgba(225,225,225,1);
   font-family:'Josefin Sans';
@@ -93,15 +93,14 @@ h1, h2, h4{
 .side-nav p{
   margin:0;
 }
-.side-nav h4{
-  padding:15px 10px 10px 20px;
+.side-nav h5{
+  padding:18px 10px 15px 20px;
   margin:0;
 }
 .side-nav li:hover{
   color:rgb(25, 198, 255);
 }
 .list:first-child{
-  border-top:1px solid rgba(80,80,80, 1);
   margin-top:0;
 }
 
@@ -150,9 +149,12 @@ input::placeholder {
 .response{
   transform: translateX(-280px);
   }
-.side{
-  background: rgba(40,40,40,1);
+.active{
+  background:transparent !important;
+
+  border-top: 0 !important;
+  box-shadow: inset 0 7px 9px -7px rgba(30,30,30,1);
+  border-left:3px solid rgb(232, 160, 40);
 }
 
 /* =============== MAP CONTAINER =================== */
-
