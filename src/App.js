@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars } from '@fortawesome/free-solid-svg-icons'
+import { faChevronCircleRight } from '@fortawesome/free-solid-svg-icons'
 import Map from './mapContainer'
 import {GoogleApiWrapper} from 'google-maps-react'
 
@@ -26,18 +26,18 @@ openCloseMenu = () => {
     return (
       <div className="App">
         <header className="header">
-    <span className="open-slide">
-      <a onClick={this.openCloseMenu} >
-      <FontAwesomeIcon icon={faBars} /> MENU
+      <span className="open-slide">
+          <a className="angle-right tooltip" onClick={this.openCloseMenu}>
+          <FontAwesomeIcon icon={faChevronCircleRight} /><span class="tooltiptext position">Expand Side Panel</span> 
       </a>
     </span>
   <div className="">
     <ul className="header-nav">
-      <h1>Neighbourhood map</h1>
+      <h1>Waterloo Places</h1>
     </ul>
   </div>
   </header>
-  <Map google={this.props.google}/>
+  <Map google={this.props.google} openCloseMenu={this.openCloseMenu}/>
 
       </div>
     );
