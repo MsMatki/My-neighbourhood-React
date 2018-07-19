@@ -18,7 +18,7 @@ state = {
             position: {lat: 43.4485, lng:  -80.5339},
         },
         {
-            name: 'David Johnston Research & Technology Park',
+            name: 'David Johnston Research',
             position: { lat: 43.4804, lng: -80.5494},
         },
         {
@@ -44,7 +44,7 @@ state = {
         if(this.props && this.props.google) {
             const map = new window.google.maps.Map(document.getElementById('map'), {
                 center: {lat: 43.4485, lng: -80.5339},
-                zoom: 11,
+                zoom: 13,
             });
 
             const infoWindow = new window.google.maps.InfoWindow({
@@ -70,7 +70,6 @@ state = {
         this.setState({markers});
     };
 
-
     setMarkers = (map) => {
         
         let markers = this.state.places.map(place => {
@@ -86,6 +85,10 @@ state = {
                         <h3>${marker.title}</h3>
                     </div>`);
                 this.state.infoWindow.open(map, marker)
+            });
+            marker.addListener('mouseover', function() {
+                this.setAnimation(window.google.maps.Animation.BOUNCE);
+                setTimeout(() => this.setAnimation(null), 400)
             });
 
             return marker;
