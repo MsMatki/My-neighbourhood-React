@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
-import { faHome } from '@fortawesome/free-solid-svg-icons'
+import { faHome, faAngleRight } from '@fortawesome/free-solid-svg-icons'
 import $ from 'jquery'
 
 
@@ -35,7 +34,7 @@ class Item extends Component{
         const {marker} = this.props;
         return(
             <div className="list">
-            <li className="card" onClick={this.openMarker}><span className="row"><span className="home"><FontAwesomeIcon icon={faHome} /></span>{marker.title}</span><FontAwesomeIcon icon={faAngleRight} /></li>
+            <li className="card" onClick={this.openMarker}><span className="row"><span className="home"><FontAwesomeIcon icon={faHome} /></span>{marker.title}</span><span className="icon-right"><FontAwesomeIcon icon={faAngleRight} /></span></li>
             </div>
         )
     }

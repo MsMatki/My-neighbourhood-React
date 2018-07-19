@@ -32,7 +32,12 @@ state = {
         {
             name: 'St. Mary’s General Hospital',
             position: {lat: 43.4379, lng: -80.5014},
-        }
+        },
+        {
+            name: 'TheMuseum',
+            position: {lat: 43.4502, lng: -80.4894},
+            id:6,
+        },
     ],
 }
 
@@ -123,6 +128,7 @@ state = {
             filteredLocations={filteredLocations}
             marker={this.state.markers}
             infoWindow={this.state.infoWindow}
+            openCloseMenu={this.props.openCloseMenu}
             />
             <div className="map-container">
             <div className="container" role="main">
