@@ -13,9 +13,9 @@ h1, h2, h5{
 }
 
 .header{
-  background-color:rgba(30,30,30,1);
+  background-color:rgba(25,25,25,1);
   overflow:hidden;
-  height:63px;
+  height:55px;
   display: flex;
   flex-direction:row;
   justify-content:space-between;
@@ -24,7 +24,6 @@ h1, h2, h5{
   top: 0;
   margin-top: 0;
   z-index: 2;
-  position:fixed;
 
 }
 
@@ -43,7 +42,7 @@ h1, h2, h5{
   list-style:none;
   padding:0;
 }
-
+/* ====================== SIDEBAR ==================== */
 .side-nav{
   height:100%;
   width:280px;
@@ -56,9 +55,9 @@ h1, h2, h5{
     rgba(42,42, 42, 1), rgba(48, 48, 48, 1)
   );
   overflow-x:hidden;
-  padding-top:60px;
+  padding-top:7px;
   transition:0.5s;
-  box-shadow: 1px 0 12px 1px rgba(45,45,45,1);;
+  box-shadow: 1px 0 12px 1px rgba(0,0,0,0.6);
 }
 .side-nav ul{
   padding:0;
@@ -71,7 +70,7 @@ h1, h2, h5{
   transition:0.3s;
   margin-bottom:1px;
   font-size:13px;
-  color:rgb(214, 214, 214);
+  color:rgb(225, 225, 225);
   cursor:pointer;
   background:
   linear-gradient(
@@ -90,11 +89,15 @@ h1, h2, h5{
 .home{
   font-size:1.1em;
 }
+.icon-right{
+  font-size:1.1em;
+  padding-right:5px;
+}
 .side-nav p{
   margin:0;
 }
 .side-nav h5{
-  padding:18px 10px 15px 20px;
+  padding:15px 10px 15px 20px;
   margin:0;
 }
 .side-nav li:hover{
@@ -103,19 +106,65 @@ h1, h2, h5{
 .list:first-child{
   margin-top:0;
 }
+.menu-box{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom:5px;
+}
+.times{
+  color:rgb(225, 225, 225);
+  padding-right:10px;
+  cursor:pointer;
+}
+.angle-right{
+  color:rgba(65, 65, 65, 1) !important;
+  font-size: 1.8em !important;
+}
+.angle-right:hover{
+  color:rgb(80, 80, 80) !important; 
+}
+
+/* =================== TOOLTIP ======================== */
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: rgba(0,0,0,0.5);
+  color: rgb(225, 225, 225);
+  text-align: center;
+  border-radius: 3px;
+  padding: 8px 2px;
+  font-size:11px;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: -5px;
+  right: 120%;
+}
+.position{
+  top: 2px;
+  left: 120%; 
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
 
 .places{
   margin-top:2em;
-  border-top:1px solid rgba(30,30,30,1);
+  border-top:1px solid rgba(27,27,27,1);
   box-shadow: 0 1px 1px 0 rgba(35,35,35,1);
 }
 
-#main{
-  transition:margin-left 0.5s;
-  padding:20px;
-  overflow:hidden;
-  width:100%;
-}
+
 input::placeholder {
   padding-left:20px;
   color:rgb(150, 150, 150);
@@ -137,15 +186,12 @@ input::placeholder {
 @media(max-width:768px){
   .header-nav{display:none}
 }
-.map-container{
-  padding-top:31px;
-}
 
 
 @media(min-width:568px){
   /*.open-slide{display:none}*/
 }
-/*Responsive classes*/
+/* --------------- Responsive classes ---------------- */
 .response{
   transform: translateX(-280px);
   }
@@ -153,8 +199,9 @@ input::placeholder {
   background:transparent !important;
 
   border-top: 0 !important;
-  box-shadow: inset 0 7px 9px -7px rgba(30,30,30,1);
+  box-shadow: inset 0 7px 9px -7px rgba(25,25,25,1);
   border-left:3px solid rgb(232, 160, 40);
 }
+
 
 /* =============== MAP CONTAINER =================== */
