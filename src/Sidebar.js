@@ -10,9 +10,9 @@ class Sidebar extends Component{
         return(
 
         <div className="side-nav">
-            <h2>Popular Places</h2>
+            <h5>Main Menu</h5>
             <div className="searchbox">
-                <input className="search" data-bind="textInput: searchOption, valueUpdate: 'afterkeydown'" placeholder="Search Locations..." 
+                <input className="search" data-bind="textInput: searchOption, valueUpdate: 'afterkeydown'" aria-labelledby="filter" placeholder="Search..." 
                 value={this.props.query}
                 onChange={(event) => this.props.updateQuery(event.target.value)}
                 />
@@ -22,7 +22,6 @@ class Sidebar extends Component{
                     <Item 
                     key={marker.title} className="" 
                     map={map} 
-                    tips={tips} 
                     marker={marker} 
                     infoWindow={infoWindow}/>
                     ))}
