@@ -14,29 +14,44 @@ state = {
     query:'',
     places: [
         {
-            name: 'Westmount Golf & Country Club',
-            position: {lat: 43.4485, lng:  -80.5339},
+            name: 'Cafe O Roaster',
+            position: {lat: 43.4637, lng:  -80.4650},
+            venue_id: '4c69d255d0bdc9b69e0da70b',
         },
         {
-            name: 'David Johnston Research',
-            position: { lat: 43.4804, lng: -80.5494},
+            name: 'Aroma Cafe',
+            position: { lat: 43.4647, lng: -80.5235},
+            venue_id: '4b6047c3f964a5207bdd29e3',
         },
         {
-            name: 'Wilfrid Laurier University',
-            position: { lat: 43.4724, lng: -80.5263},
+            name: 'Princess Cafe',
+            position: { lat: 43.4664, lng: -80.5226},
+            venue_id: '4c03e06139d476b061a630a7',
         },
         {
-            name: 'University of Waterloo',
-            position: {lat: 43.4723, lng: -80.5449},
+            name: "Balzac's Coffee",
+            position: {lat: 43.4514, lng: -80.4982},
+            venue_id: '4c814190d34ca14300a92080',
         },
         {
-            name: 'St. Mary’s General Hospital',
-            position: {lat: 43.4379, lng: -80.5014},
+            name: 'City Cafe Bakery',
+            position: {lat: 43.4762, lng: -80.4847},
+            venue_id: '51af397f498eed68816c2557',
         },
         {
-            name: 'TheMuseum',
-            position: {lat: 43.4502, lng: -80.4894},
-            id:6,
+            name: 'Williams Coffee Pub',
+            position: {lat: 43.4767, lng: -80.5230},
+            venue_id: '4b9bbfc8f964a520d12036e3',
+        },
+        {
+            name: 'Williams Fresh Café',
+            position: {lat: 43.4724, lng: -80.5385},
+            venue_id: '4b5fa4a8f964a5200bc629e3',
+        },
+        {
+            name: 'Berlin Bicycle Cafe',
+            position: {lat: 43.4536, lng: -80.5182},
+            venue_id: '571e509e498e65ecae235c30',
         },
     ],
 }
@@ -142,7 +157,10 @@ state = {
     }
 
 }
-
+var foursquare = require('react-foursquare')({
+    clientID: 'CWQ3TXXBMMD30Y5OX4O3XMW1PWD1XBAI5DQISABAH2D2RVDL',
+    clientSecret: 'IU40MZ3LYRZC1MU431LJCYO1BZDFAMJ1OZNZYCM0F3FOY35W'  
+  });
 
 export default Map;
 
