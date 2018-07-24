@@ -16,7 +16,7 @@ class Sidebar extends Component{
             <div className="tooltip"><a className="times" onClick={this.props.openCloseMenu}><FontAwesomeIcon icon={faTimesCircle}/><span className="tooltiptext">Collapse Side Panel</span></a></div>
             </div>
             <div className="searchbox">
-                <input className="search" data-bind="textInput: searchOption, valueUpdate: 'afterkeydown'" aria-labelledby="filter" placeholder="Search..." 
+                <input className="search" tabIndex="1" aria-labelledby="filter" placeholder="Search..." 
                 value={this.props.query}
                 onChange={(event) => this.props.updateQuery(event.target.value)}
                 />
