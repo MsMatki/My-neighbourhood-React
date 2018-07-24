@@ -11,6 +11,7 @@ class Item extends Component{
         infoWindow.setContent(
             `<div name=${ marker.title }>
                 <h3>${marker.title}</h3>
+                <p>${marker.text}</p>
             </div>`
         );
         marker.setAnimation(window.google.maps.Animation.BOUNCE);
