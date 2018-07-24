@@ -28,7 +28,7 @@ openCloseMenu = () => {
         <header className="header">
       <span className="open-slide">
           <a className="angle-right tooltip" onClick={this.openCloseMenu}>
-          <FontAwesomeIcon icon={faChevronCircleRight} /><span class="tooltiptext position">Expand Side Panel</span> 
+          <FontAwesomeIcon icon={faChevronCircleRight} /><span className="tooltiptext position">Expand Side Panel</span> 
       </a>
     </span>
   <div className="">
