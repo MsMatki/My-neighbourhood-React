@@ -9,9 +9,12 @@ class Item extends Component{
         const {map, infoWindow, marker} = this.props;
         map.panTo(marker.getPosition());
         infoWindow.setContent(
-            `<div name=${ marker.title }>
+            `<div class="infoWindow">
+            <div name=${ marker.title }>
                 <h3>${marker.title}</h3>
                 <p>${marker.text}</p>
+                <p>Tips provided by <a href="https://foursquare.com/">Foursquare</a></p>
+            </div>
             </div>`
         );
         marker.setAnimation(window.google.maps.Animation.BOUNCE);
@@ -35,7 +38,7 @@ class Item extends Component{
         const {marker} = this.props;
         return(
             <div className="list">
-            <li className="card" onClick={this.openMarker}><div className="box"><span className="icon-awesome"><FontAwesomeIcon icon={faCoffee} /></span><span className="row">{marker.title}<span className="icon-right"><FontAwesomeIcon icon={faAngleRight} /></span></span></div></li>
+            <li className="card" tabIndex="2" onClick={this.openMarker}><div className="box"><span className="icon-awesome"><FontAwesomeIcon icon={faCoffee} /></span><span className="row">{marker.title}<span className="icon-right"><FontAwesomeIcon icon={faAngleRight} /></span></span></div></li>
             </div>
         )
     }
