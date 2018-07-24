@@ -42,6 +42,10 @@ h1, h2, h5{
   list-style:none;
   padding:0;
 }
+
+header h1{
+  padding-right:1em;
+}
 /* ====================== SIDEBAR ==================== */
 .side-nav{
   height:100%;
@@ -64,7 +68,7 @@ h1, h2, h5{
 }
 
 .side-nav li{
-  padding:17px 10px 17px 0;
+  padding:16px 10px 16px 0;
   text-decoration:none;
   display:block;
   transition:0.3s;
@@ -81,6 +85,11 @@ h1, h2, h5{
   justify-content: center;
   align-items: center;
 }
+@media(min-width:1500px){
+  .side-nav li{
+    padding:17px 10px 17px 0;
+  }
+  }
 
 .box{
   display:flex;
@@ -176,7 +185,7 @@ h1, h2, h5{
 }
 
 .places{
-  margin-top:2em;
+  margin-top:1em;
   border-top:1px solid rgba(27,27,27,1);
   box-shadow: 0 1px 1px 0 rgba(35,35,35,1);
 }
@@ -221,3 +230,17 @@ input::placeholder {
 }
 
 /* =============== MAP CONTAINER =================== */
+
+.logo-container{
+  display:flex;
+  justify-content: center;
+  padding-top:0.5em;
+}
+.infoWindow{
+  width:200px;
+}
+img{
+height:40px;
+width:230px;
+
+}
