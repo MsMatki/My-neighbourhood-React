@@ -67,15 +67,17 @@ state = {
             const params = {'venue_id': place.venue_id};
             foursquare.venues.getVenueTips(params)
             .then((response) => {
+                let tip
                 if (response.meta.code === 200) {
-                tips.push({text: response.response.tips.items[0].text, name: place.name, position: place.position})
+                    tip = {text: response.response.tips.items[0].text, name: place.name, position: place.position}
                 } else {
-                    tips.push({text:"Sorry Couldn't retrieve data from Foursquare", name: place.name, position: place.position})
+                    tip = {text:"Sorry Couldn't retrieve data from Foursquare", name: place.name, position: place.position}
                 }
+                tips.push(tip)
+                this.setState(tips)
+                this.addMarker(this.state.map, tip)
             })
-            this.setState({tips})      
         })
-        console.log(tips)
     }
     loadMap() {
         //Check if Google props has data and Map is loaded --Based on feedback
@@ -89,7 +91,6 @@ state = {
                 content: 'content'
             });
             this.setState({map, infoWindow});
-            this.setMarkers(map);
         }
     }
 
@@ -108,31 +109,28 @@ state = {
         this.setState({markers});
     };
 
-    setMarkers = (map) => {
-        
-        let markers = this.state.tips.map(place => {
-            const marker = new window.google.maps.Marker({
-                position: {lat: place.position.lat, lng: place.position.lng},
-                map,
-                text: place.text,
-                title: place.name
-            });
-            marker.addListener('click', () => {
-                this.state.map.panTo(marker.getPosition());
-                this.state.infoWindow.setContent(`
-                    <div name=${marker.title}>
-                        <h3>${marker.title}</h3>
-                        <p>${marker.text}</p>  
-                    </div>`);
-                this.state.infoWindow.open(map, marker)
-            });
-            marker.addListener('mouseover', function() {
-                this.setAnimation(window.google.maps.Animation.BOUNCE);
-                setTimeout(() => this.setAnimation(null), 400)
-            });
-
-            return marker;
+    addMarker = (map, place) => {
+        const {markers} = this.state
+        const marker = new window.google.maps.Marker({
+            position: {lat: place.position.lat, lng: place.position.lng},
+            map,
+            text: place.text,
+            title: place.name
         });
+        marker.addListener('click', () => {
+            this.state.map.panTo(marker.getPosition());
+            this.state.infoWindow.setContent(`
+                <div name=${marker.title}>
+                    <h3>${marker.title}</h3>
+                    <p>${marker.text}</p>  
+                </div>`);
+            this.state.infoWindow.open(map, marker)
+        });
+        marker.addListener('mouseover', function() {
+            this.setAnimation(window.google.maps.Animation.BOUNCE);
+            setTimeout(() => this.setAnimation(null), 400)
+        });
+        markers.push(marker)
         this.setState({markers})
     }
 
