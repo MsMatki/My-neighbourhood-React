@@ -12,6 +12,7 @@ state = {
     infoWindow: {},
     markers: [],
     query:'',
+    tips:[],
     places: [
         {
             name: 'Cafe O Roaster',
@@ -58,6 +59,23 @@ state = {
 
     componentDidMount(){
         this.loadMap();
+        
+    }
+    componentWillMount(){
+        const {tips} = this.state
+        this.state.places.forEach(place => {
+            const params = {'venue_id': place.venue_id};
+            foursquare.venues.getVenueTips(params)
+            .then((response) => {
+                if (response.meta.code === 200) {
+                tips.push({text: response.response.tips.items[0].text, name: place.name, position: place.position})
+                } else {
+                    tips.push({text:"Sorry Couldn't retrieve data from Foursquare", name: place.name, position: place.position})
+                }
+            })
+            this.setState({tips})      
+        })
+        console.log(tips)
     }
     loadMap() {
         //Check if Google props has data and Map is loaded --Based on feedback
@@ -92,10 +110,11 @@ state = {
 
     setMarkers = (map) => {
         
-        let markers = this.state.places.map(place => {
+        let markers = this.state.tips.map(place => {
             const marker = new window.google.maps.Marker({
                 position: {lat: place.position.lat, lng: place.position.lng},
                 map,
+                text: place.text,
                 title: place.name
             });
             marker.addListener('click', () => {
@@ -103,6 +122,7 @@ state = {
                 this.state.infoWindow.setContent(`
                     <div name=${marker.title}>
                         <h3>${marker.title}</h3>
+                        <p>${marker.text}</p>  
                     </div>`);
                 this.state.infoWindow.open(map, marker)
             });
