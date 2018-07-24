@@ -13,7 +13,7 @@ class Sidebar extends Component{
         <div className="side-nav">
             <div className="menu-box">
             <h5>Main Menu</h5>
-            <div className="tooltip"><a className="times" onClick={this.props.openCloseMenu}><FontAwesomeIcon icon={faTimesCircle}/><span class="tooltiptext">Collapse Side Panel</span></a></div>
+            <div className="tooltip"><a className="times" onClick={this.props.openCloseMenu}><FontAwesomeIcon icon={faTimesCircle}/><span className="tooltiptext">Collapse Side Panel</span></a></div>
             </div>
             <div className="searchbox">
                 <input className="search" data-bind="textInput: searchOption, valueUpdate: 'afterkeydown'" aria-labelledby="filter" placeholder="Search..." 
