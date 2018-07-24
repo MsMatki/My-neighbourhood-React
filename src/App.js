@@ -33,7 +33,7 @@ openCloseMenu = () => {
     </span>
   <div className="">
     <ul className="header-nav">
-      <h1>Waterloo Places</h1>
+      <h1>Waterloo Coffee Places</h1>
     </ul>
   </div>
   </header>
