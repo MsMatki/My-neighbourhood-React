@@ -5,8 +5,9 @@ import sortBy from 'sort-by'
 import { Locations } from './Places.js'
 
 class Map extends Component{
-
-state = {
+constructor(props){
+    super(props);
+this.state = {
     map: {},
     infoWindow: {},
     markers: [],
@@ -14,12 +15,15 @@ state = {
     tips:[],
     places: Locations
 }
+this.initMap = this.initMap.bind(this);
+this.addMarker = this.addMarker.bind(this);
 
-    componentDidMount(){
-        //load map to the page
-        this.loadMap();
-        
-    }
+}
+componentDidMount(){
+    window.initMap = this.initMap;
+
+    loadJS('https://maps.googleapis.com/maps/api/js?key=AIzaSyD3CUp0hxnPlJ3Ig0vpm2klPIuOWJjCdcc&callback=initMap')
+}
     componentWillMount(){
         const {tips} = this.state
         this.state.places.forEach(place => {
@@ -51,9 +55,8 @@ state = {
         map.fitBounds(bounds)
     }
 
-    loadMap() {
+    initMap() {
         //Check if Google props has data and Map is loaded
-        if(this.props && this.props.google) {
             const map = new window.google.maps.Map(document.getElementById('map'), {
                 center: {lat: 43.4485, lng: -80.5339},
                 zoom: 13,
@@ -63,10 +66,7 @@ state = {
                 content: 'content'
             });
             this.setState({map, infoWindow});
-        }else{
-            //log out Error
-            console.log("Error:Cann't Load Google Map!");
-        }
+        
     }
 
     updateQuery = (query) => {
@@ -162,6 +162,18 @@ var foursquare = require('react-foursquare')({
     clientID: 'CWQ3TXXBMMD30Y5OX4O3XMW1PWD1XBAI5DQISABAH2D2RVDL',
     clientSecret: 'IU40MZ3LYRZC1MU431LJCYO1BZDFAMJ1OZNZYCM0F3FOY35W'  
   });
+
+  function loadJS(src) {
+    var ref = window.document.getElementsByTagName("script")[0];
+    var script = window.document.createElement("script");
+    script.src = src;
+    script.async = true;
+    script.onerror = function () {
+        console.log("Google Maps can't be loaded");
+    };
+    ref.parentNode.insertBefore(script, ref);
+}
+
 
 export default Map;
 
