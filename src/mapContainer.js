@@ -27,20 +27,27 @@ componentDidMount(){
     componentWillMount(){
         const {tips} = this.state
         this.state.places.forEach(place => {
-            const params = {'venue_id': place.venue_id};
-            //fetch data from foursquare, more on https://github.com/foursquare/react-foursquare
-            foursquare.venues.getVenueTips(params)
+            
+        const clientId = "VVPEFJC40SJDVH1YFRJS4IBNQ0GGZJY5X1XLHEA23H1LTVOQ\n";
+        const clientSecret = "MEAM2N42L434P1MB1AJZFUHM5XAGMCDNGETUH5XNZIYEHOKI\n";
+        const url = `https://api.foursquare.com/v2/venues/${place.venue_id}/tips?&client_id=${clientId}&client_secret=${clientSecret}&v=20180725`
+
+         //fetch data from foursquare
+           fetch(url)
             .then((response) => {
+                response.json().then((data) => {
                 let tip
                 // handle Errors
-                if (response.meta.code === 200) {
+                if (response.status === 200) {
                     tip = {text: response.response.tips.items[0].text, name: place.name, position: place.position}
                 } else {
                     tip = {text:"Sorry Couldn't retrieve data from Foursquare", name: place.name, position: place.position}
                 }
+                console.log(data.response)
                 tips.push(tip)
                 this.setState(tips)
                 this.addMarker(this.state.map, tip)
+            })
             })
         })
     }
