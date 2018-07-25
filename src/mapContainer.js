@@ -16,6 +16,7 @@ state = {
 }
 
     componentDidMount(){
+        //load map to the page
         this.loadMap();
         
     }
@@ -23,9 +24,11 @@ state = {
         const {tips} = this.state
         this.state.places.forEach(place => {
             const params = {'venue_id': place.venue_id};
+            //fetch data from foursquare, more on https://github.com/foursquare/react-foursquare
             foursquare.venues.getVenueTips(params)
             .then((response) => {
                 let tip
+                // handle Errors
                 if (response.meta.code === 200) {
                     tip = {text: response.response.tips.items[0].text, name: place.name, position: place.position}
                 } else {
@@ -39,6 +42,7 @@ state = {
     }
 
     componentDidUpdate(){
+        //add bounds
         const {markers,map} = this.state
         let bounds = new window.google.maps.LatLngBounds();
 
@@ -48,7 +52,7 @@ state = {
     }
 
     loadMap() {
-        //Check if Google props has data and Map is loaded --Based on feedback
+        //Check if Google props has data and Map is loaded
         if(this.props && this.props.google) {
             const map = new window.google.maps.Map(document.getElementById('map'), {
                 center: {lat: 43.4485, lng: -80.5339},
@@ -82,6 +86,7 @@ state = {
 
     addMarker = (map, place) => {
         const {markers} = this.state
+        //add marker
         const marker = new window.google.maps.Marker({
             position: {lat: place.position.lat, lng: place.position.lng},
             map,
@@ -89,6 +94,7 @@ state = {
             title: place.name,
             animation: window.google.maps.Animation.DROP,
         });
+        //open infoWIndow content on marker click
         marker.addListener('click', () => {
             this.state.map.panTo(marker.getPosition());
             this.state.infoWindow.setContent(`
@@ -101,6 +107,7 @@ state = {
                 </div>`);
             this.state.infoWindow.open(map, marker)
         });
+        //animation marker bounce on mouseover
         marker.addListener('mouseover', function() {
             this.setAnimation(window.google.maps.Animation.BOUNCE);
             setTimeout(() => this.setAnimation(null), 400)
@@ -130,13 +137,13 @@ state = {
         return (
             <div>
             <Sidebar 
-            updateQuery={this.updateQuery} 
-            query={this.state.query}
-            map={this.state.map} 
-            filteredLocations={filteredLocations}
-            marker={this.state.markers}
-            infoWindow={this.state.infoWindow}
-            openCloseMenu={this.props.openCloseMenu}
+                updateQuery={this.updateQuery} 
+                query={this.state.query}
+                map={this.state.map} 
+                filteredLocations={filteredLocations}
+                marker={this.state.markers}
+                infoWindow={this.state.infoWindow}
+                openCloseMenu={this.props.openCloseMenu}
             />
             <div className="map-container">
             <div className="container" role="main">
@@ -150,6 +157,7 @@ state = {
     }
 
 }
+// more on https://github.com/foursquare/react-foursquare
 var foursquare = require('react-foursquare')({
     clientID: 'CWQ3TXXBMMD30Y5OX4O3XMW1PWD1XBAI5DQISABAH2D2RVDL',
     clientSecret: 'IU40MZ3LYRZC1MU431LJCYO1BZDFAMJ1OZNZYCM0F3FOY35W'  

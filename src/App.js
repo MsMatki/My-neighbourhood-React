@@ -12,6 +12,7 @@ state = {
 }
 
 openCloseMenu = () => {
+  //Open and close sidebar function
   let ul = document.querySelector('.side-nav')
     if(this.state.sidebar === 'open'){
     ul.classList.add('response');
@@ -29,14 +30,14 @@ openCloseMenu = () => {
       <span className="open-slide">
           <a className="angle-right tooltip" onClick={this.openCloseMenu}>
           <FontAwesomeIcon icon={faChevronCircleRight} /><span className="tooltiptext position">Expand Side Panel</span> 
-      </a>
-    </span>
-  <div className="">
-    <ul className="header-nav">
-      <h1>Waterloo Coffee Places</h1>
-    </ul>
-  </div>
-  </header>
+        </a>
+        </span>
+      <div className="">
+        <ul className="header-nav">
+          <h1>Waterloo Coffee Places</h1>
+        </ul>
+      </div>
+      </header>
   <Map google={this.props.google} openCloseMenu={this.openCloseMenu}/>
 
       </div>

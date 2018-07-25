@@ -3,37 +3,35 @@ import Item from './NavItem'
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-class Sidebar extends Component{
 
-  
-    render(){
-        const {tips,map,infoWindow,marker} = this.props;
+const Sidebar = props => {  
+
+        const {map,infoWindow} = props;
         return(
-
         <div className="side-nav">
             <div className="menu-box">
             <h5>Main Menu</h5>
-            <div className="tooltip"><a className="times" onClick={this.props.openCloseMenu}><FontAwesomeIcon icon={faTimesCircle}/><span className="tooltiptext">Collapse Side Panel</span></a></div>
+            <div className="tooltip"><a className="times" onClick={props.openCloseMenu}><FontAwesomeIcon icon={faTimesCircle}/><span className="tooltiptext">Collapse Side Panel</span></a></div>
             </div>
             <div className="searchbox">
                 <input className="search" tabIndex="1" aria-labelledby="filter" placeholder="Search..." 
-                value={this.props.query}
-                onChange={(event) => this.props.updateQuery(event.target.value)}
+                value={props.query}
+                onChange={(event) => props.updateQuery(event.target.value)}
                 />
                 </div>
                 <ul className="places">
-                {this.props.filteredLocations.map((marker) => (     
+                {props.filteredLocations.map((marker) => (     
                     <Item 
-                    key={marker.title} className="" 
-                    map={map} 
-                    marker={marker} 
-                    infoWindow={infoWindow}/>
+                        key={marker.title} className="" 
+                        map={map} 
+                        marker={marker} 
+                        infoWindow={infoWindow}/>
                     ))}
                 </ul>
         </div>
         )
 
-    }
+    
 }
 
 export default Sidebar;

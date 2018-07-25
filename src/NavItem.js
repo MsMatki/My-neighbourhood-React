@@ -5,6 +5,8 @@ import $ from 'jquery'
 
 
 class Item extends Component{
+
+    //open marker function opens the marker when clicked on listItem
     openMarker = () => {
         const {map, infoWindow, marker} = this.props;
         map.panTo(marker.getPosition());
@@ -17,6 +19,7 @@ class Item extends Component{
             </div>
             </div>`
         );
+        //marker animation bounce when clicked on the listItem
         marker.setAnimation(window.google.maps.Animation.BOUNCE);
         setTimeout(() => {
             marker.setAnimation(null)
@@ -25,6 +28,7 @@ class Item extends Component{
     }
     componentDidMount(){
         const {marker} = this.props;
+        //add active class when listItem is click 
                 $('.list li').click(function () {
                     $('.list .active').removeClass('active');
                     $(this).addClass('active');
@@ -38,7 +42,7 @@ class Item extends Component{
         const {marker} = this.props;
         return(
             <div className="list">
-            <li className="card" tabIndex="2" onClick={this.openMarker}><div className="box"><span className="icon-awesome"><FontAwesomeIcon icon={faCoffee} /></span><span className="row">{marker.title}<span className="icon-right"><FontAwesomeIcon icon={faAngleRight} /></span></span></div></li>
+                <li className="card" tabIndex="2" onClick={this.openMarker}><div className="box"><span className="icon-awesome"><FontAwesomeIcon icon={faCoffee} /></span><span className="row">{marker.title}<span className="icon-right"><FontAwesomeIcon icon={faAngleRight} /></span></span></div></li>
             </div>
         )
     }
