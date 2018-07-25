@@ -25,6 +25,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 * Deploy it to gh-pages branch by npm run deploy
 * NOTE: The service workers for this app will only cache the site when it is in production mode.
 
+## Copyright and License
+
+Copyright 2018 By Bartol. Code released under the [MIT](https://github.com/MsMatki/My-neighbourhood-React/blob/master/LICENSE) license.
+
 ## Technologies Used
 
 * HTML5
