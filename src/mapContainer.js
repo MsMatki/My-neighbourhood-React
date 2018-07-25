@@ -164,11 +164,7 @@ componentDidMount(){
     }
 
 }
-// more on https://github.com/foursquare/react-foursquare
-var foursquare = require('react-foursquare')({
-    clientID: 'CWQ3TXXBMMD30Y5OX4O3XMW1PWD1XBAI5DQISABAH2D2RVDL',
-    clientSecret: 'IU40MZ3LYRZC1MU431LJCYO1BZDFAMJ1OZNZYCM0F3FOY35W'  
-  });
+
 
   function loadError(oError) {
     throw new URIError("The script " + oError.target.src + " didn't load correctly.");
