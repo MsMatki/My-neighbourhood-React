@@ -163,16 +163,17 @@ var foursquare = require('react-foursquare')({
     clientSecret: 'IU40MZ3LYRZC1MU431LJCYO1BZDFAMJ1OZNZYCM0F3FOY35W'  
   });
 
-  function loadJS(src) {
-    var ref = window.document.getElementsByTagName("script")[0];
-    var script = window.document.createElement("script");
-    script.src = src;
-    script.async = true;
-    script.onerror = function () {
-        console.log("Google Maps can't be loaded");
-    };
-    ref.parentNode.insertBefore(script, ref);
-}
+  function loadError(oError) {
+    throw new URIError("The script " + oError.target.src + " didn't load correctly.");
+  }
+  
+  function loadJS(url, onloadFunction) {
+    var newScript = document.createElement("script");
+    newScript.onerror = loadError;
+    if (onloadFunction) { newScript.onload = onloadFunction; }
+    document.head.appendChild(newScript);
+    newScript.src = url;
+  }
 
 
 export default Map;
