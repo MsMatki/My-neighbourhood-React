@@ -24,12 +24,13 @@ componentDidMount(){
 
     loadJS('https://maps.googleapis.com/maps/api/js?key=AIzaSyD3CUp0hxnPlJ3Ig0vpm2klPIuOWJjCdcc&callback=initMap')
 }
+
     componentWillMount(){
         const {tips} = this.state
         this.state.places.forEach(place => {
             
-        const clientId = "VVPEFJC40SJDVH1YFRJS4IBNQ0GGZJY5X1XLHEA23H1LTVOQ\n";
-        const clientSecret = "MEAM2N42L434P1MB1AJZFUHM5XAGMCDNGETUH5XNZIYEHOKI\n";
+        const clientId = "CWQ3TXXBMMD30Y5OX4O3XMW1PWD1XBAI5DQISABAH2D2RVDL";
+        const clientSecret = "IU40MZ3LYRZC1MU431LJCYO1BZDFAMJ1OZNZYCM0F3FOY35W";
         const url = `https://api.foursquare.com/v2/venues/${place.venue_id}/tips?&client_id=${clientId}&client_secret=${clientSecret}&v=20180725`
 
          //fetch data from foursquare
@@ -39,7 +40,7 @@ componentDidMount(){
                 let tip
                 // handle Errors
                 if (response.status === 200) {
-                    tip = {text: response.response.tips.items[0].text, name: place.name, position: place.position}
+                    tip = {text: data.response.tips.items[0].text, name: place.name, position: place.position}
                 } else {
                     tip = {text:"Sorry Couldn't retrieve data from Foursquare", name: place.name, position: place.position}
                 }
