@@ -8,7 +8,7 @@ class Map extends Component{
 constructor(props){
     super(props);
 this.state = {
-    map: {},
+    map: { loading: true },
     infoWindow: {},
     markers: [],
     query:'',
@@ -167,8 +167,8 @@ componentDidMount(){
 }
 
 
-  function loadError(oError) {
-    throw new URIError("The script " + oError.target.src + " didn't load correctly.");
+  function loadError() {
+    alert("Could not load JavaScript file for Maps API");
   }
   
   function loadJS(url, onloadFunction) {
