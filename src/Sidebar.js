@@ -14,7 +14,7 @@ const Sidebar = props => {
             <div className="tooltip" ><a className="times" aria-label="Close" onClick={props.openCloseMenu}><FontAwesomeIcon icon={faTimesCircle}/><span className="tooltiptext">Collapse Side Panel</span></a></div>
             </div>
             <div className="searchbox">
-                <input type="text" className="search" tabIndex="1" aria-label="Search" role="search" placeholder="Filter Locations..." 
+                <input type="text" className="search" tabIndex="1" aria-label="Search" role="textbox" placeholder="Filter Locations..." 
                 value={props.query}
                 onChange={(event) => props.updateQuery(event.target.value)}
                 />
