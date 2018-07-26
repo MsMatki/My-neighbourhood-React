@@ -56,11 +56,13 @@ componentDidMount(){
     componentDidUpdate(){
         //add bounds
         const {markers,map} = this.state
+        if (!map.loading) {
         let bounds = new window.google.maps.LatLngBounds();
 
         markers.forEach((m)=>
         bounds.extend(m.position))
         map.fitBounds(bounds)
+        }
     }
 
     initMap() {
@@ -95,6 +97,7 @@ componentDidMount(){
     addMarker = (map, place) => {
         const {markers} = this.state
         //add marker
+        if (!map.loading) {
         const marker = new window.google.maps.Marker({
             position: {lat: place.position.lat, lng: place.position.lng},
             map,
@@ -122,6 +125,7 @@ componentDidMount(){
         });
         markers.push(marker)
         this.setState({markers})
+    }
     }
 
 
