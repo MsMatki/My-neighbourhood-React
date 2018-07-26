@@ -49,7 +49,7 @@ loadData(){
                 this.setState(tips)
                 this.addMarker(this.state.map, tip)
             })
-            }).catch(error => console.error(`Fetch Error =\n`, error));
+            }).catch(error => alert(`Sorry Couldn't retrieve data from Foursquare`, error));
         })
     }
 
