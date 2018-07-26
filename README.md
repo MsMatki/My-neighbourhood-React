@@ -4,7 +4,7 @@ This single page app uses the Google maps API and the location-based service Fou
 
 ## Preview
 
-You can check the live website [Here](https://msmatki.github.io/My-neighbourhood-React/
+You can check the live website [Here](https://msmatki.github.io/My-neighbourhood-React/)
 
 ## Screenshot
 
