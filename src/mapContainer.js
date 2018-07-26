@@ -49,7 +49,7 @@ loadData(){
                 this.setState(tips)
                 this.addMarker(this.state.map, tip)
             })
-            }).catch(error => alert(`Sorry Couldn't retrieve data from Foursquare`, error));
+            }).catch(error => alert(`Sorry Couldn't retrieve data from Foursquare. Please try again later.`, error));
         })
     }
 
@@ -109,7 +109,7 @@ loadData(){
         marker.addListener('click', () => {
             this.state.map.panTo(marker.getPosition());
             this.state.infoWindow.setContent(`
-            <div class="infoWindow">
+            <div class="infoWindow" tabIndex="3">
                 <div name=${marker.title}>
                     <h3>${marker.title}</h3>
                     <p>${marker.text}</p>  

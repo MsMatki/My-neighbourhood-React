@@ -26,7 +26,7 @@ openCloseMenu = () => {
     return (
       <div className="App">
         <header className="header">
-      <span className="open-slide">
+      <span className="open-slide" aria-label="Open">
           <a className="angle-right tooltip" onClick={this.openCloseMenu}>
           <FontAwesomeIcon icon={faChevronCircleRight} /><span className="tooltiptext position">Expand Side Panel</span> 
         </a>

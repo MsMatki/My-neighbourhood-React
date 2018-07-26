@@ -11,10 +11,10 @@ const Sidebar = props => {
         <div className="side-nav">
             <div className="menu-box">
             <h5>Main Menu</h5>
-            <div className="tooltip"><a className="times" onClick={props.openCloseMenu}><FontAwesomeIcon icon={faTimesCircle}/><span className="tooltiptext">Collapse Side Panel</span></a></div>
+            <div className="tooltip" ><a className="times" aria-label="Close" onClick={props.openCloseMenu}><FontAwesomeIcon icon={faTimesCircle}/><span className="tooltiptext">Collapse Side Panel</span></a></div>
             </div>
             <div className="searchbox">
-                <input className="search" tabIndex="1" aria-labelledby="filter" placeholder="Search..." 
+                <input type="text" className="search" tabIndex="1" aria-label="Search" role="search" placeholder="Filter Locations..." 
                 value={props.query}
                 onChange={(event) => props.updateQuery(event.target.value)}
                 />

@@ -11,7 +11,7 @@ class Item extends Component{
         const {map, infoWindow, marker} = this.props;
         map.panTo(marker.getPosition());
         infoWindow.setContent(
-            `<div class="infoWindow">
+            `<div class="infoWindow" tabIndex="3">
             <div name=${ marker.title }>
                 <h3>${marker.title}</h3>
                 <p>${marker.text}</p>
@@ -42,7 +42,7 @@ class Item extends Component{
         const {marker} = this.props;
         return(
             <div className="list">
-                <li className="card" tabIndex="2" onClick={this.openMarker}><div className="box"><span className="icon-awesome"><FontAwesomeIcon icon={faCoffee} /></span><span className="row">{marker.title}<span className="icon-right"><FontAwesomeIcon icon={faAngleRight} /></span></span></div></li>
+                <li className="card" tabIndex="2" role="button" onClick={this.openMarker}><div className="box"><span className="icon-awesome"><FontAwesomeIcon icon={faCoffee} /></span><span className="row">{marker.title}<span className="icon-right"><FontAwesomeIcon icon={faAngleRight} /></span></span></div></li>
             </div>
         )
     }
