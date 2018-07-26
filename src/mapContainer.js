@@ -25,7 +25,7 @@ componentDidMount(){
     loadJS('https://maps.googleapis.com/maps/api/js?key=AIzaSyD3CUp0hxnPlJ3Ig0vpm2klPIuOWJjCdcc&callback=initMap')
 }
 
-    componentWillMount(){
+loadData(){
         const {tips} = this.state
         this.state.places.forEach(place => {
             
@@ -76,7 +76,7 @@ componentDidMount(){
                 content: 'content'
             });
             this.setState({map, infoWindow});
-        
+            this.loadData(); 
     }
 
     updateQuery = (query) => {
