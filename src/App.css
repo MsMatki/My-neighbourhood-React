@@ -85,7 +85,7 @@ header h1{
   justify-content: center;
   align-items: center;
 }
-@media(min-width:1500px){
+@media screen and(min-width:1500px){
   .side-nav li{
     padding:17px 10px 17px 0;
   }
@@ -209,13 +209,8 @@ input::placeholder {
   border:none;
   color:white;
 }
-@media(max-width:768px){
+@media screen and(max-width:768px){
   .header-nav{display:none}
-}
-
-
-@media(min-width:568px){
-  /*.open-slide{display:none}*/
 }
 /* --------------- Responsive classes ---------------- */
 .response{
