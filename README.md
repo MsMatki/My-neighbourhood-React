@@ -2,6 +2,9 @@
 
 This single page app uses the Google maps API and the location-based service Foursquare API to list some coffee Locations in the Waterloo, Ontario. The project was built for the Udacity Front End Nanodegree Program. The purpose of the project is to demonstrate a good understanding of: reactJS, javascript, API usage, HTML, CSS, responsive design, and front-end web development overall.
 
+## Preview
+
+You can check the live website [Here](https://msmatki.github.io/My-neighbourhood-React/
 
 ## Screenshot
 
