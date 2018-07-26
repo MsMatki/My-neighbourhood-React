@@ -3,7 +3,6 @@ import './App.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronCircleRight } from '@fortawesome/free-solid-svg-icons'
 import Map from './mapContainer'
-import {GoogleApiWrapper} from 'google-maps-react'
 
 class App extends Component {
 
@@ -45,6 +44,4 @@ openCloseMenu = () => {
   }
 }
 
-export default GoogleApiWrapper({
-  apiKey:('AIzaSyD3CUp0hxnPlJ3Ig0vpm2klPIuOWJjCdcc')
-})(App)
+export default App;
