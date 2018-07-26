@@ -49,7 +49,7 @@ componentDidMount(){
                 this.setState(tips)
                 this.addMarker(this.state.map, tip)
             })
-            })
+            }).catch(error => console.error(`Fetch Error =\n`, error));
         })
     }
 
