@@ -5,9 +5,8 @@ import sortBy from 'sort-by'
 import { Locations } from './Places.js'
 
 class Map extends Component{
-constructor(props){
-    super(props);
-this.state = {
+
+state = {
     map: { loading: true },
     infoWindow: {},
     markers: [],
@@ -15,17 +14,15 @@ this.state = {
     tips:[],
     places: Locations
 }
-this.initMap = this.initMap.bind(this);
-this.addMarker = this.addMarker.bind(this);
 
-}
+
 componentDidMount(){
     window.initMap = this.initMap;
 
     loadJS('https://maps.googleapis.com/maps/api/js?key=AIzaSyD3CUp0hxnPlJ3Ig0vpm2klPIuOWJjCdcc&callback=initMap')
 }
 
-loadData(){
+loadData = () => {
         const {tips} = this.state
         this.state.places.forEach(place => {
             
@@ -65,7 +62,7 @@ loadData(){
         }
     }
 
-    initMap() {
+    initMap = () => {
         //Check if Google props has data and Map is loaded
             const map = new window.google.maps.Map(document.getElementById('map'), {
                 center: {lat: 43.4485, lng: -80.5339},
@@ -169,8 +166,6 @@ loadData(){
     }
 
 }
-
-
   function loadError() {
     alert("Could not load JavaScript file for Maps API");
   }
