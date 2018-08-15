@@ -2,7 +2,7 @@
   "name": "my-neighbourhood",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://msmatki.github.io/My-neighbourhood-React/",
+  "homepage": "https://msmatki.github.io/React-Neighbourhood-map/",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.0-14",
     "@fortawesome/free-brands-svg-icons": "^5.1.0-11",
